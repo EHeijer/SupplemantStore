@@ -7,9 +7,8 @@
                 <input type="text">
             </div>
             <ul class="nav-list">
-                <li class="log-in"> <img src="../assets/user-solid.svg" alt=""><p>LOG IN</p></li>
-                <li class="shopping-cart"> <img src="../assets/shopping-cart-solid.svg" alt=""><p>CART</p></li>
-                <li class="checkout"><router-link to=""><p>CHECKOUT</p></router-link></li>
+                <li class="log-in"> <img src="../assets/user-solid.svg" alt=""><p>LOGGA IN</p></li>
+                <li class="shopping-cart"> <img src="../assets/shopping-cart-solid.svg" alt=""><p>VARUKORG</p></li>
             </ul>
         </div>
         
@@ -30,14 +29,17 @@ export default {
 
 <style lang="scss" scoped>
     header {
-        background: #262626;
+        background: #000;
         padding: 1rem;
+        position: fixed;
+        width: 100vw;
         .header-container{
+            
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             justify-content: space-evenly;
             h1 {
-                color: #fff;
+                color: #ff6900;
             }
             .search-box{
                 position: relative;
@@ -81,7 +83,7 @@ export default {
                     .checkout {
                         display: flex;
                         a {
-                            border: solid 2px #fff;
+                            border: solid 2px #ff6900;
                             color: #fff;
                             text-decoration: none;
                             padding: 0.5rem 1rem;

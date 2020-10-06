@@ -17,7 +17,7 @@ export default {
 
 <style lang="scss" scoped>
     footer {
-        background: #262626;
+        background: #000;
         padding: 2rem;
     }
 </style>
