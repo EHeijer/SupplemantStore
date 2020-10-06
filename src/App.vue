@@ -2,25 +2,24 @@
   <div id="app">
     
     <NavHeader/>
-    <MainFooter/>
     <router-view/>
+    <NewsLetter/>
+    <MainFooter/>
+    
   </div>
 </template>
 <script>
 import NavHeader from "@/components/NavHeader.vue";
-import MainFooter from "@/components/MainFooter.vue"
+import MainFooter from "@/components/MainFooter.vue";
+import NewsLetter from "@/components/NewsLetter.vue";
 export default {
   components: {
     NavHeader,
-    MainFooter
+    MainFooter,
+    NewsLetter
   }
 }
 </script>
-
-export default {
-  
-}
-
 
 <style lang="scss">
 * {
@@ -36,7 +35,15 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-
+.click-button {
+  background: #ff6900;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 1rem 5rem;
+  display: flex;
+  justify-content: center;
+}
 #nav {
   padding: 30px;
 
