@@ -10,6 +10,11 @@
                 <li class="log-in"> <img src="../assets/user-solid.svg" alt=""><p>LOGGA IN</p></li>
                 <li class="shopping-cart"> <img src="../assets/shopping-cart-solid.svg" alt=""><p>VARUKORG</p></li>
             </ul>
+            <ul class="product-list">
+                <li><router-link to="/products">ALLA PRODUKTER</router-link></li>
+                <li><router-link to="">KOSTILLSKOTT</router-link></li>
+                <li><router-link to="">TRÄNINGSKLÄDER</router-link></li>
+            </ul>
         </div>
         
     </header>
@@ -92,6 +97,36 @@ export default {
                         }
                     }
             
+            }
+            .product-list {
+                display: grid;
+                grid-template-columns: 35% 30% 35%;
+                list-style: none;
+                color: #fff;
+                padding: 1rem 0 0 0;
+                justify-self: center;
+                margin-left: 1rem;
+                li {
+                    margin: 0 0rem;
+                    padding: 0 1rem;
+                    display: flex;
+                    justify-content: left;
+                    
+                    a{
+                        color: #fff;
+                        text-decoration: none;
+                        font-size: 13px;
+                        font-weight: bold;
+                        text-align: left;
+                    }
+                }
+                li:nth-child(1){
+                    border-right: solid #fff 1px;
+                }
+                li:nth-child(2){
+                    border-right: solid #fff 1px;
+                    
+                }
             }
         }
     }

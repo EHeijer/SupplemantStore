@@ -36,9 +36,9 @@ export default {
             margin-bottom: 4rem;
             .upper-text {
                 display: grid;
-                grid-template-columns: 35% 65%;
-                margin-bottom: 3rem;
                 width: 70%;
+                margin-bottom: 3rem;
+                
                 margin:1.5rem auto;
                 span{
                     background: #e10000;

@@ -44,6 +44,37 @@ export default {
   display: flex;
   justify-content: center;
 }
+.banner {
+   padding: 1rem 2rem;
+    display: grid;
+    color: #fff;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.banner-wrapper {
+  max-width: 400px;
+  justify-self: left;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin-top: 6rem;
+  span {
+    background: #e10000;
+    padding: 0.5rem 1rem;
+    width: 150px;
+    font-weight: bold;
+  }
+  h1 {
+    width: 80%;
+    text-align:left;
+    margin: 1rem 0 6rem 0;
+  }
+  .click-button {
+    width: 300px;
+  }
+}
 #nav {
   padding: 30px;
 

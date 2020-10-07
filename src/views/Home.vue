@@ -68,42 +68,14 @@ export default {
     "box1 box2 box3 box4"
   ;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 500px 500px;
+  grid-template-rows: 600px 500px;
   column-gap: 15px;
   row-gap: 15px;
   max-width: 1538px;
   margin: auto;
   .banner {
-    padding: 1rem 2rem;
-    display: grid;
-    color: #fff;
     grid-area: banner;
     background-image: url("../assets/homepage-banner.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    .banner-wrapper {
-      max-width: 400px;
-      justify-self: left;
-      display: flex;
-      flex-direction: column;
-      align-items: left;
-      justify-content: center;
-      span {
-        background: #e10000;
-        padding: 0.5rem 1rem;
-        width: 150px;
-        font-weight: bold;
-      }
-      h1 {
-        width: 80%;
-        text-align:left;
-        margin: 1rem 0 4rem 0;
-      }
-      .click-button {
-        width: 300px;
-      }
-    }
   }
   .product-box {
     display: flex;
