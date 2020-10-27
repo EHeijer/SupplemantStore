@@ -1,14 +1,14 @@
 <template>
     <header>
         <div class="header-container">
-            <h1>SUPPLEMANT STORE</h1>
+            <router-link to="/" class="title"><h1>SUPPLEMANT STORE</h1></router-link>
             <div class="search-box">
                 <img src="../assets/search-solid.svg" alt="">
                 <input type="text">
             </div>
             <ul class="nav-list">
-                <li class="log-in"> <img src="../assets/user-solid.svg" alt=""><p>LOGGA IN</p></li>
-                <li class="shopping-cart"> <img src="../assets/shopping-cart-solid.svg" alt=""><p>VARUKORG</p></li>
+                <router-link to="/login" class="log-in"> <img src="../assets/user-solid.svg" alt=""><p>LOGGA IN</p></router-link>
+                <router-link to="/shoppingCart" class="shopping-cart" @click="showCart()"> <img src="../assets/shopping-cart-solid.svg" alt=""><span class="cart-items-counter" v-if="cart.length > 0">{{cart.length}}</span><p>VARUKORG</p></router-link>
             </ul>
             <ul class="product-list">
                 <li><router-link to="/products">ALLA PRODUKTER</router-link></li>
@@ -21,13 +21,21 @@
 
 </template>
 <script>
+
 export default {
     data: () => ({
 
     }),
     
     methods: {
-
+        showCart() {
+            console.log(this.cart);
+        }
+    },
+    computed: {
+        cart() {
+            return this.$store.state.cart;
+        }
     }
 }
 </script>
@@ -43,9 +51,13 @@ export default {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             justify-content: space-evenly;
-            h1 {
+            .title{
+                text-decoration: none;
+                h1 {
                 color: #ff6900;
+                }
             }
+            
             .search-box{
                 position: relative;
                 display: flex;
@@ -76,13 +88,28 @@ export default {
                 font-size: 13px;
                 font-weight: bold;
                     .log-in {
+                        text-decoration: none;
+                        color: #fff;
                         img {
                             width: 20px;
                         }
                     }
                     .shopping-cart {
+                        position: relative;
+                        cursor: pointer;
+                        text-decoration: none;
+                        color: #fff;
                         img{
                             width: 25px;
+                        }
+                        .cart-items-counter {
+                            border-radius: 30px;
+                            background: red;
+                            padding: 2px 6px;
+                            position: absolute;
+                            color: #fff;
+                            top: -25%;
+                            left: 50%;
                         }
                     }
                     .checkout {

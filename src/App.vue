@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     
+    
     <NavHeader/>
     <router-view/>
     <NewsLetter/>
@@ -12,12 +13,14 @@
 import NavHeader from "@/components/NavHeader.vue";
 import MainFooter from "@/components/MainFooter.vue";
 import NewsLetter from "@/components/NewsLetter.vue";
+
 export default {
   components: {
     NavHeader,
     MainFooter,
     NewsLetter
-  }
+  },
+  
 }
 </script>
 
@@ -34,6 +37,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background: rgb(226, 225, 225);
+  
 }
 .click-button {
   background: #ff6900;
@@ -43,6 +48,8 @@ export default {
   padding: 1rem 5rem;
   display: flex;
   justify-content: center;
+  width: 300px;
+  border-radius: 5px;
 }
 .banner {
    padding: 1rem 2rem;

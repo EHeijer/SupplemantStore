@@ -40,7 +40,7 @@ export default {
         margin: auto;
         .banner {
             background-image: url("../assets/product-banner.jpg");
-            
+            margin-bottom: 1rem;
             
             h1 {
                 color: #fff;
@@ -49,6 +49,7 @@ export default {
         .product-container {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
         }
     }
 </style>
