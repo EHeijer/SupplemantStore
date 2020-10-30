@@ -24,7 +24,6 @@ export default {
     .news-container {
         background: #2f2f2f;
         height: 250px;
-        margin-top: 2rem;
         display: grid;
         grid-template-columns: 40% 30% 30%;
         align-items: center;

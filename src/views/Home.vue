@@ -61,7 +61,7 @@ export default {
 </script>
 <style lang="scss">
 .home-container {
-  
+  padding-bottom: 2rem;
   display: grid;
   grid-template-areas: 
     "banner banner banner banner"

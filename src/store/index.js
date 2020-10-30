@@ -14,7 +14,8 @@ export default new Vuex.Store({
     // showCart: false,
     sumOfCart: 0,
     orders: [],
-    lastOrder: {}
+    lastOrder: {},
+    registered: true
   },
   mutations: {
     setProducts(state, payload) {

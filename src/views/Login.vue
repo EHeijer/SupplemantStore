@@ -1,20 +1,17 @@
 <template>
    <div class="form-container">
-       <LoginComp v-show="registered"/>
-       <RegisterComp v-show="!registered"/>
+       <LoginComp/>
    </div>
 </template>
 
 <script>
-    //  import LoginComp from('@/components/LoginComp.vue')
-    //  import RegisterComp from('@/components/RegisterComp.vue')
+    import LoginComp from '@/components/LoginComp.vue'
     export default {
         components: {
-            //  LoginComp,
-            //  RegisterComp
+            LoginComp
         },
         data: () => ({
-            registered: true
+            
         })
     }
 </script>

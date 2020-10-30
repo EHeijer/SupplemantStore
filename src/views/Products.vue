@@ -50,6 +50,7 @@ export default {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 1rem;
+            padding-bottom: 2rem;
         }
     }
 </style>
