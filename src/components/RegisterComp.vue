@@ -3,18 +3,18 @@
        <div class="register-form">
          <h2>REGISTRERA DIG HÄR</h2>
          <div class="input-name">
-            <input type="text" placeholder="Användarnamn">
+            <input type="text" placeholder="Användarnamn" v-model="user.username">
          </div>
          <div class="input-address">
-            <input type="text" placeholder="Adress">
+            <input type="text" placeholder="Adress" v-model="user.address">
          </div>
          <div class="input-email">
-            <input type="text" placeholder="E-mail">
+            <input type="text" placeholder="E-mail" v-model="user.email">
          </div>
          <div class="input-password">
-            <input type="text" placeholder="Lösenord">
+            <input type="text" placeholder="Lösenord" v-model="user.password">
          </div>
-         <router-link to="#"><button class="click-button">Registrera</button></router-link>
+         <router-link to="#"><button class="click-button" @click="registerUser()">Registrera</button></router-link>
       </div>
    </div>
 </template>
@@ -22,14 +22,24 @@
 <script>
    export default {
      data: () => ({
-       
-     })
+       user: {
+          username: '',
+          email: '',
+          address: '',
+          password: ''
+       }
+     }),
+     methods: {
+        registerUser() {
+           this.$store.dispatch('userRegistration', this.user);
+        }
+     }
    }
 </script>
 
 <style lang="scss" scoped>
    .register {
-      min-height: 80vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;

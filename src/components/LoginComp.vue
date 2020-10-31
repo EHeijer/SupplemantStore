@@ -3,12 +3,12 @@
       <div class="login-form">
          <h2>LOGGA IN PÅ DITT KONTO</h2>
          <div class="input-name">
-            <input type="text" placeholder="Användarnamn">
+            <input type="text" placeholder="Användarnamn" v-model="user.username">
          </div>
          <div class="input-password">
-            <input type="text" placeholder="Lösenord">
+            <input type="text" placeholder="Lösenord" v-model="user.password">
          </div>
-         <button class="click-button">LOGGA IN</button>
+         <button class="click-button" @click="login()" >LOGGA IN</button>
          <div class="form-bottom">
             <div class="checkbox">
                <input type="checkbox" id="check">
@@ -30,17 +30,27 @@
 <script>
    export default {
      data: () => ({
-       
+       user: {
+          username: '',
+          password: ''
+       }
      }),
      methods: {
-        
-     }
+        login() {
+           this.$store.commit('initialiseStore');
+           this.$store.dispatch('login', this.user);
+           this.$router.push({path: '/profile'})
+        }
+     },
+     mounted() {
+        this.$store.commit('initialiseStore');
+    }
    }
 </script>
 
 <style lang="scss" scoped>
    .login-container {
-      min-height: 80vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;

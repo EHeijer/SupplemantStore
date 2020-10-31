@@ -7,7 +7,8 @@
                 <input type="text">
             </div>
             <ul class="nav-list">
-                <router-link to="/login" class="log-in"> <img src="../assets/user-solid.svg" alt=""><p>LOGGA IN</p></router-link>
+                <router-link to="/login" class="log-in" v-if="loggedIn == false"><img src="../assets/user-solid.svg" alt=""><p>LOGGA IN</p></router-link>
+                <router-link to="/" class="log-in" @click.native="logout()" v-else-if="loggedIn == true"><img src="../assets/user-solid.svg" alt=""><p>LOGGA UT</p></router-link>
                 <router-link to="/shoppingCart" class="shopping-cart" @click="showCart()"> <img src="../assets/shopping-cart-solid.svg" alt=""><span class="cart-items-counter" v-if="cart.length > 0">{{cart.length}}</span><p>VARUKORG</p></router-link>
             </ul>
             <ul class="product-list">
@@ -24,18 +25,28 @@
 
 export default {
     data: () => ({
-
+        
     }),
     
     methods: {
         showCart() {
             console.log(this.cart);
+        },
+        logout() {
+            this.$store.commit('logoutUser');
+            console.log(this.currentUser)
         }
     },
     computed: {
         cart() {
             return this.$store.state.cart;
+        },
+        loggedIn() {
+            return this.$store.state.loggedIn;
         }
+    },
+    mounted() {
+        this.$store.commit('initialiseStore');
     }
 }
 </script>
