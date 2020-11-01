@@ -50,10 +50,12 @@
 
 <style lang="scss" scoped>
    .login-container {
-      min-height: 100vh;
+      padding-top: 100px;
+      min-height: 90vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      background: rgb(214, 214, 214);
        hr {
          border: 0;
          height: 0;

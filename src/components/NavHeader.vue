@@ -53,7 +53,7 @@ export default {
 
 <style lang="scss" scoped>
     header {
-        background: #000;
+        background: #2f2f2f;
         padding: 1rem;
         position: fixed;
         width: 100vw;
