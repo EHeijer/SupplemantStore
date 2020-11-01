@@ -39,7 +39,8 @@
 
 <style lang="scss" scoped>
    .register {
-      min-height: 100vh;
+      padding-top: 100px;
+      min-height: 90vh;
       display: flex;
       justify-content: center;
       align-items: center;
