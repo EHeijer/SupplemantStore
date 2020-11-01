@@ -33,6 +33,7 @@ export default {
 </script>
 
 <style lang="scss">
+    
     .product-page {
         display: grid;
         grid-template-rows: 550px auto;

@@ -7,8 +7,8 @@
                 <input type="text">
             </div>
             <ul class="nav-list">
-                <router-link to="/login" class="log-in" v-if="loggedIn == false"><img src="../assets/user-solid.svg" alt=""><p>LOGGA IN</p></router-link>
-                <router-link to="/" class="log-in" @click.native="logout()" v-else-if="loggedIn == true"><img src="../assets/user-solid.svg" alt=""><p>LOGGA UT</p></router-link>
+                <router-link to="/login" class="log-in" v-if="!currentUser"><img src="../assets/user-solid.svg" alt=""><p>LOGGA IN</p></router-link>
+                <router-link to="/" class="log-in" @click.native="logout()" v-if="currentUser"><img src="../assets/user-solid.svg" alt=""><p>LOGGA UT</p></router-link>
                 <router-link to="/shoppingCart" class="shopping-cart" @click="showCart()"> <img src="../assets/shopping-cart-solid.svg" alt=""><span class="cart-items-counter" v-if="cart.length > 0">{{cart.length}}</span><p>VARUKORG</p></router-link>
             </ul>
             <ul class="product-list">
@@ -33,7 +33,7 @@ export default {
             console.log(this.cart);
         },
         logout() {
-            this.$store.commit('logoutUser');
+            this.$store.dispatch('auth/logout');
             console.log(this.currentUser)
         }
     },
@@ -42,16 +42,21 @@ export default {
             return this.$store.state.cart;
         },
         loggedIn() {
-            return this.$store.state.loggedIn;
+           return this.$store.state.auth.status.loggedIn;
+        },
+        currentUser() {
+            // return this.$store.state.currentUser;
+            return this.$store.state.auth.user;
         }
     },
-    mounted() {
-        this.$store.commit('initialiseStore');
+    created() {
+        // this.$store.commit('initialiseStore');
     }
 }
 </script>
 
 <style lang="scss" scoped>
+    
     header {
         background: #2f2f2f;
         padding: 1rem;
@@ -64,8 +69,10 @@ export default {
             justify-content: space-evenly;
             .title{
                 text-decoration: none;
+                
                 h1 {
                 color: #ff6900;
+                
                 }
             }
             

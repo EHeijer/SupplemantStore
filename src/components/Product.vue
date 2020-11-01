@@ -112,6 +112,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 .product {
     padding: 1rem 0;
     background: #f5f5f5;

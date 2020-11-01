@@ -29,7 +29,7 @@ export default new Vuex.Store({
       address: '',
       role: []
     },
-    loggedIn: false
+    // loggedIn: false
     },
   mutations: {
     initialiseStore(state) {

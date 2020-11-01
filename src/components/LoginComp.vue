@@ -2,13 +2,18 @@
    <div class="login-container">
       <div class="login-form">
          <h2>LOGGA IN PÅ DITT KONTO</h2>
-         <div class="input-name">
-            <input type="text" placeholder="Användarnamn" v-model="user.username">
-         </div>
-         <div class="input-password">
-            <input type="text" placeholder="Lösenord" v-model="user.password">
-         </div>
-         <button class="click-button" @click="login()" >LOGGA IN</button>
+         <form name="form" @submit.prevent="login()">
+            <div class="input-name">
+               <input type="text" v-validate="'required'" placeholder="Användarnamn" v-model="user.username" name="username">
+               <div class="alert alert-danger" v-if="errors.has('username')" role="alert">Username is required</div>
+            </div>
+            <div class="input-password">
+               <input type="password" v-validate="'required'" placeholder="Lösenord" v-model="user.password" name="password">
+               <div class="alert alert-danger" v-if="errors.has('password')" role="alert">Password is required</div>
+            </div>
+            <button class="click-button">LOGGA IN</button>
+            <div class="alert alert-danger" v-if="message" role="alert">{{message}}</div>
+         </form>
          <div class="form-bottom">
             <div class="checkbox">
                <input type="checkbox" id="check">
@@ -28,23 +33,51 @@
 </template>
 
 <script>
+import User from '../models/user';
    export default {
      data: () => ({
-       user: {
-          username: '',
-          password: ''
-       }
+       user: new User('',''),
+       message: ''
      }),
      methods: {
         login() {
-           this.$store.commit('initialiseStore');
-           this.$store.dispatch('login', this.user);
-           this.$router.push({path: '/profile'})
+         //   this.$store.commit('initialiseStore');
+         //   this.$store.dispatch('login', this.user);
+         //   this.$router.push({path: '/profile'})
+         this.$validator.validateAll().then(isValid => {
+            if(!isValid) {
+               return;
+            }
+
+            if(this.user.username && this.user.password) {
+               this.$store.dispatch('auth/login', this.user).then(
+                  () => {
+                     this.$router.push('/profile');
+                  },
+                  error => {
+                     this.message = 
+                     (error.response && error.response.data) ||
+                     error.message ||
+                     error.toString();
+                  }
+               )
+            }
+         })
         }
      },
-     mounted() {
-        this.$store.commit('initialiseStore');
-    }
+     computed: {
+        loggedIn() {
+           return this.$store.state.auth.status.loggedIn;
+        }
+     },
+     created() {
+        if(this.loggedIn) {
+           this.$router.push('/profile');
+        }
+     }
+   //   mounted() {
+   //      this.$store.commit('initialiseStore');
+   //  }
    }
 </script>
 
