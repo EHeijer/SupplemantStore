@@ -34,9 +34,7 @@
                     <p>Totalsumma</p>
                     <p class="price">{{cartSum}} Kr</p>
                 </div>
-                <router-link  to="/orderconfirm">
                     <button @click="sendOrder()" class="click-button"><p>SKICKA ORDER</p></button>
-                </router-link>
             </section>
        </section>
        
@@ -53,7 +51,8 @@ import { mapState } from "vuex"
     },
     data: () => ({
         order: {
-            orderLines: []
+            orderLines: [],
+            user: {}
         },
     }),
 
@@ -64,10 +63,20 @@ import { mapState } from "vuex"
             body.style.overflowY = "auto";
         },
         sendOrder() {
-            this.$store.dispatch('loadOrderLines')
-            let cartItemsIndexStart = this.orderLines.length - this.cart.length;
-            this.order.orderLines = this.orderLines.slice(cartItemsIndexStart,this.orderLines.length)
-            this.$store.dispatch('sendOrder', this.order);
+            if(!this.currentUser) {
+                this.$router.push('/login')
+                console.log("hellooooooooo")
+            }else {
+                this.$store.dispatch('loadOrderLines')
+                let cartItemsIndexStart = this.orderLines.length - this.cart.length;
+                this.order.orderLines = this.orderLines.slice(cartItemsIndexStart,this.orderLines.length)
+                this.order.user.id = this.currentUser.id;
+                console.log(this.currentUser)
+                console.log(localStorage.getItem('user'));
+                this.$store.dispatch('sendOrder', this.order);
+                this.$router.push('/orderconfirm')
+            }
+            
         }
     },
      computed: {
@@ -79,7 +88,7 @@ import { mapState } from "vuex"
              return this.$store.state.cart;
          },
          cartSum() {
-            return this.$store.state.sumOfCart;
+            return this.$store.getters.getCartSum;
          },
          getOrderLines(){
             return this.$store.state.orderLines;
@@ -89,6 +98,10 @@ import { mapState } from "vuex"
         ]),
         getOrderItems() {
             return this.$store.getters.getOrderItems;
+        },
+        currentUser() {
+            
+            return this.$store.state.auth.user;
         }
      },
     beforeMount () {
@@ -102,11 +115,12 @@ import { mapState } from "vuex"
 .cart-container {
    padding-top: 10rem;
     .shopping-cart {
-        
+        margin-bottom: 5rem;
         
     }
     .cart-main {
         margin-top: 10rem;
+        
         padding: 2rem 2rem;
         box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.4);
             border-radius: 5px;

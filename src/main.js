@@ -28,8 +28,13 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 new Vue({
   router,
   store,
-  // beforeCreate(){
-  //   this.$store.commit('initialiseStore');
-  // },
+  
+  
+  beforeCreate(){
+    if(sessionStorage.getItem('cart') != null){
+    this.$store.state.cart = JSON.parse(sessionStorage.getItem('cart'));
+    
+    }
+  },
   render: h => h(App)
 }).$mount('#app')

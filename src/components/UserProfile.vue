@@ -2,8 +2,8 @@
 <div class="user-profile-container">
     <div class="user-profile">
         <div class="profile-top">
-            <font-awesome-icon icon="home" class="icon" />
-            <font-awesome-icon style="margin-left: 10px;" icon="sign-out-alt" class="icon" />
+            <font-awesome-icon icon="home" class="icon" @click="toHomePage"/>
+            <font-awesome-icon style="margin-left: 10px;" icon="sign-out-alt" class="icon" @click="logout()"/>
         </div>
         <div class="profile-card">
             <h1>Profilsida</h1>
@@ -28,7 +28,13 @@ export default {
     }),
     
     methods: {
-
+        logout() {
+            this.$store.dispatch('auth/logout');
+            this.$router.push('/');
+        },
+        toHomePage(){
+            this.$router.push('/');
+        }
     },
     computed: {
         currentUser() {

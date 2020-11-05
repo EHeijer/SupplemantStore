@@ -8,7 +8,7 @@
             </div>
             <ul class="nav-list">
                 <router-link to="/login" class="log-in" v-if="!currentUser"><img src="../assets/user-solid.svg" alt=""><p>LOGGA IN</p></router-link>
-                <router-link to="/" class="log-in" @click.native="logout()" v-if="currentUser"><img src="../assets/user-solid.svg" alt=""><p>LOGGA UT</p></router-link>
+                <router-link to="/profile" class="log-in" v-if="currentUser"><img src="../assets/user-solid.svg" alt=""><p>Mitt Konto</p></router-link>
                 <router-link to="/shoppingCart" class="shopping-cart" @click="showCart()"> <img src="../assets/shopping-cart-solid.svg" alt=""><span class="cart-items-counter" v-if="cart.length > 0">{{cart.length}}</span><p>VARUKORG</p></router-link>
             </ul>
             <ul class="product-list">
@@ -32,10 +32,6 @@ export default {
         showCart() {
             console.log(this.cart);
         },
-        logout() {
-            this.$store.dispatch('auth/logout');
-            console.log(this.currentUser)
-        }
     },
     computed: {
         cart() {
@@ -58,7 +54,7 @@ export default {
 <style lang="scss" scoped>
     
     header {
-        background: #2f2f2f;
+        background: #000;
         padding: 1rem;
         position: fixed;
         width: 100vw;

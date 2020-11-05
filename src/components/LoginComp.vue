@@ -2,7 +2,7 @@
    <div class="login-container">
       <div class="login-form">
          <h2>LOGGA IN PÅ DITT KONTO</h2>
-         <form name="form" @submit.prevent="login()">
+         <form name="form" @submit.prevent="login">
             <div class="input-name">
                <input type="text" v-validate="'required'" placeholder="Användarnamn" v-model="user.username" name="username">
                <div class="alert alert-danger" v-if="errors.has('username')" role="alert">Username is required</div>
@@ -52,6 +52,7 @@ import User from '../models/user';
             if(this.user.username && this.user.password) {
                this.$store.dispatch('auth/login', this.user).then(
                   () => {
+                     localStorage.setItem('user', JSON.stringify(this.user));
                      this.$router.push('/profile');
                   },
                   error => {

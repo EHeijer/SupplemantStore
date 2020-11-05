@@ -4,6 +4,8 @@ import axios from 'axios'
 import AxiosPlugin from 'vue-axios-cors'
 import { auth } from './auth.module';
 
+
+
 Vue.use(Vuex, axios, AxiosPlugin)
 
 export default new Vuex.Store({
@@ -14,8 +16,9 @@ export default new Vuex.Store({
     cartQuantity: 0,
     // showCart: false,
     sumOfCart: 0,
+    sumOfOrder: 0,
     orders: [],
-    lastOrder: {},
+    lastOrder: [],
     user: {
       username: '',
       email: '',
@@ -29,12 +32,13 @@ export default new Vuex.Store({
       address: '',
       role: []
     },
+    
     // loggedIn: false
     },
   mutations: {
     initialiseStore(state) {
-      if(localStorage.getItem('currentUser')){
-        let userJson = localStorage.getItem('currentUser');
+      if(localStorage.getItem('user')){
+        let userJson = localStorage.getItem('user');
         let user = JSON.parse(userJson);
         state.currentUser.username = user.username;
         state.currentUser.email = user.email;
@@ -47,30 +51,31 @@ export default new Vuex.Store({
         state.loggedIn = false;
       }
       
-    }
-    ,
-    registerNewUser(state, user){
-      state.user.username = user.username;
-      state.user.email = user.email;
-      state.user.address = user.address;
-      state.user.password = user.password;
     },
-    loginUser(state, user) {
-      state.currentUser.username = user.username;
-      state.currentUser.password = user.password;
-      state.currentUser.email = user.email;
-      state.currentUser.address = user.address;
-      state.currentUser.role = user.roles;
-      state.currentUser.token = user.token;
 
-      state.loggedIn = true;
-      localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
-    },
-    logoutUser(state) {
-      localStorage.removeItem('currentUser');
-      state.loggedIn = false;
-      console.log(state.currentUser.username == "");
-    },
+    
+    // registerNewUser(state, user){
+    //   state.user.username = user.username;
+    //   state.user.email = user.email;
+    //   state.user.address = user.address;
+    //   state.user.password = user.password;
+    // },
+    // loginUser(state, user) {
+    //   state.currentUser.username = user.username;
+    //   state.currentUser.password = user.password;
+    //   state.currentUser.email = user.email;
+    //   state.currentUser.address = user.address;
+    //   state.currentUser.role = user.roles;
+    //   state.currentUser.token = user.token;
+
+    //   state.loggedIn = true;
+    //   localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
+    // },
+    // logoutUser(state) {
+    //   localStorage.removeItem('currentUser');
+    //   state.loggedIn = false;
+    //   console.log(state.currentUser.username == "");
+    // },
     setProducts(state, payload) {
       state.products = [];
       for(let i = 0; i < payload.length; i++) {
@@ -91,8 +96,9 @@ export default new Vuex.Store({
       payload.forEach(order=> {
         state.orders.push(order)
       })
-      state.lastOrder = payload[payload.length-1]
-      state.sumOfCart = 0;
+      
+      // state.lastOrder = payload[payload.length-1]
+      
     },
 
     addOrderLine(state, payload) {
@@ -100,8 +106,16 @@ export default new Vuex.Store({
       console.log(payload)
     },
     addOrder(state, payload) {
-      state.orders.push(payload);  
+      state.lastOrder = []
+      state.sumOfOrder = 0;
+      state.orders.push(payload);
+      state.cart.forEach(item => {
+        state.lastOrder.push(item)
+      })
+      state.sumOfOrder = state.sumOfCart
+      sessionStorage.removeItem('cart'); 
       state.cart = []
+      state.sumOfCart = 0;
     },
 
     getOrderLine(state,payload) {
@@ -109,32 +123,37 @@ export default new Vuex.Store({
       console.log(payload)
     },
 
-    removeOrderLine(state, payload) {
+    async removeOrderLine(state, payload) {
       state.cart.splice(state.cart.indexOf(payload), 1);
+      let _cart = JSON.stringify(state.cart);
+      await sessionStorage.setItem('cart', _cart);
       // state.sumOfCart -= payload.product.price*payload.quantity;
     },
-    incrementQuantityAndSum(state,payload) {
+    async incrementQuantityAndSum(state,payload) {
       state.sumOfCart += payload.product.price;
       payload.quantity += 1;
+      let _cart = JSON.stringify(state.cart);
+      await sessionStorage.setItem('cart', _cart);
     },
-    decrementQuantityAndSum(state, payload){
+    async decrementQuantityAndSum(state, payload){
       state.sumOfCart -= payload.product.price;
       payload.quantity -= 1;
+      let _cart = JSON.stringify(state.cart);
+      await sessionStorage.setItem('cart', _cart);
     }
   },
   actions: {
-    async userRegistration({commit}, user) {
-      const response = await axios.post('http://localhost:8080/register', {...user});
-      commit('registerNewUser', response.data)
-    },
-    async login({commit}, user){
-      const response = await axios.post('http://localhost:8080/login', {...user});
-      commit('loginUser', response.data)
-    },
+    
+    // async userRegistration({commit}, user) {
+    //   const response = await axios.post('http://localhost:8080/register', {...user});
+    //   commit('registerNewUser', response.data)
+    // },
+    // async login({commit}, user){
+    //   const response = await axios.post('http://localhost:8080/login', {...user});
+    //   commit('loginUser', response.data)
+    // },
     async loadProducts({commit}) {
       const response = await axios.get("http://localhost:8080/products/", {headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
       }})
       commit('setProducts', response.data)
     },
@@ -184,6 +203,15 @@ export default new Vuex.Store({
         }
       });
       return orderArr
+    },
+    getCartSum(state) {
+      let sumOfCart = 0;
+      state.cart.forEach(item => {
+        
+        let sumOfCartItem = item.quantity * item.product.price
+        sumOfCart += sumOfCartItem;
+      })
+      return sumOfCart;
     }
     
   },

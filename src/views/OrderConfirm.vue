@@ -12,7 +12,7 @@
                    <p>ANTAL</p>
                    <p>PRIS</p>
                </div>
-               <div class="orderlines" v-for="(item, index) in lastOrder.orderLines" :key="index">
+               <div class="orderlines" v-for="(item, index) in lastOrder" :key="index">
                    <article class="order-item">
                        <div class="item-image">
                            <img :src="require('@/assets/' + item.product.imageUrl)" alt="">
@@ -25,14 +25,14 @@
                            <p>{{item.quantity}}</p>
                        </div>
                        <div class="price">
-                           <p>{{item.sumOfOrderLine}} kr</p>
+                           <p>{{item.quantity * item.product.price}} kr</p>
                        </div>
                    </article>
                    <hr>
                </div>
                <div class="order-total">
                    <p>ORDERSUMMA:</p>
-                   <p class="sum">{{lastOrder.totalOrderPrice}} kr</p>
+                   <p class="sum">{{this.$store.state.sumOfOrder}} kr</p>
                </div>
                <router-link to="/products"><button class="click-button">FORTSÄTT HANDLA</button></router-link>
            </div>
@@ -64,6 +64,7 @@
 <style lang="scss" scoped>
    .order-confirm {
        padding-top: 8rem;
+       margin-bottom: 2rem;
        .container {
            box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.4);
             border-radius: 5px;
