@@ -1,12 +1,12 @@
 <template>
   <div class="product-page">
-    <div class="banner">
+    <!-- <div class="banner">
         <div class="banner-wrapper">
             <span><p>UPP TILL 60%</p></span>
             <h1>VÅRA POPULÄRASTE KLÄDMÄRKEN</h1>
             <router-link class="click-button" to="#">klicka här</router-link>
         </div>
-    </div>
+    </div> -->
     <div class="product-container">
         <product v-for="(product,index) in products"  :key="index" :product="product"/>
     </div>

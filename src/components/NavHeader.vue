@@ -2,36 +2,38 @@
     <header>
         <div class="header-container">
             <router-link to="/" class="title"><h1>SUPPLEMANT STORE</h1></router-link>
-            <div class="search-box">
+            <!-- <div class="search-box">
                 <img src="../assets/search-solid.svg" alt="">
                 <input type="text">
-            </div>
-            <ul class="nav-list">
-                <router-link to="/login" class="log-in" v-if="!currentUser"><img src="../assets/user-solid.svg" alt=""><p>LOGGA IN</p></router-link>
-                <router-link to="/profile" class="log-in" v-if="currentUser"><img src="../assets/user-solid.svg" alt=""><p>Mitt Konto</p></router-link>
-                <router-link to="/shoppingCart" class="shopping-cart" @click="showCart()"> <img src="../assets/shopping-cart-solid.svg" alt=""><span class="cart-items-counter" v-if="cart.length > 0">{{cart.length}}</span><p>VARUKORG</p></router-link>
-            </ul>
+            </div> -->
             <ul class="product-list">
                 <li><router-link to="/products">ALLA PRODUKTER</router-link></li>
                 <li><router-link to="">KOSTILLSKOTT</router-link></li>
                 <li><router-link to="">TRÄNINGSKLÄDER</router-link></li>
             </ul>
+            <ul class="nav-list">
+                <router-link to="/shoppingCart" class="shopping-cart"> <img src="../assets/shopping-cart-solid.svg" alt=""><span class="cart-items-counter" v-if="cart.length > 0">{{cart.length}}</span><p>VARUKORG</p></router-link>
+                <router-link to="#" class="log-in" v-if="!currentUser" @click.native="toLogin()"><img src="../assets/user-solid.svg" alt=""><p>LOGGA IN</p></router-link>
+                <router-link to="/profile" class="log-in" v-if="currentUser"><img src="../assets/user-solid.svg" alt=""><p>MITT KONTO</p></router-link>
+            </ul>
         </div>
-        
     </header>
 
 </template>
 <script>
-
 export default {
-    data: () => ({
+    components: {
         
+    },
+    data: () => ({
+
     }),
     
     methods: {
-        showCart() {
-            console.log(this.cart);
-        },
+        toLogin(){
+            this.$store.state.login = true;
+            document.querySelector('body').style.overflowY = "hidden"
+        }
     },
     computed: {
         cart() {
@@ -41,7 +43,6 @@ export default {
            return this.$store.state.auth.status.loggedIn;
         },
         currentUser() {
-            // return this.$store.state.currentUser;
             return this.$store.state.auth.user;
         }
     },
@@ -54,15 +55,26 @@ export default {
 <style lang="scss" scoped>
     
     header {
-        background: #000;
-        padding: 1rem;
+        background: #2f2f2f;
+        padding: 1.4rem;
         position: fixed;
         width: 100vw;
+        .underlying-with-opacity{
+         position: absolute;
+         background: black;
+         top:0;
+         left: 0;
+         height: 100vh;
+         width: 100vw;
+         z-index: 1;
+         opacity: 0.7;
+         overflow-y: scroll;
+      }
         .header-container{
             
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            justify-content: space-evenly;
+            grid-template-columns: 30% 50% 20%;
+            justify-content: space-between;
             .title{
                 text-decoration: none;
                 
@@ -95,17 +107,21 @@ export default {
             }
             .nav-list {
                 list-style: none;
-                display: grid;
-                justify-content: center;
-                grid-template-columns: repeat(5, 1fr);
+                justify-self: center;
+                display: flex;
+                gap: 2rem;
+                justify-content: space-evenly;
                 color: #fff;
                 font-size: 13px;
                 font-weight: bold;
+                    a:hover {
+                        transform: scale(1.1);
+                    }
                     .log-in {
                         text-decoration: none;
                         color: #fff;
                         img {
-                            width: 20px;
+                            width: 19px;
                         }
                     }
                     .shopping-cart {
@@ -144,21 +160,25 @@ export default {
                 grid-template-columns: 35% 30% 35%;
                 list-style: none;
                 color: #fff;
-                padding: 1rem 0 0 0;
+                // padding: 1rem 0 0 0;
                 justify-self: center;
                 margin-left: 1rem;
                 li {
-                    margin: 0 0rem;
+                    margin: auto;
                     padding: 0 1rem;
                     display: flex;
+                    align-items: center;
                     justify-content: left;
-                    
+                    height: 100%;
                     a{
                         color: #fff;
                         text-decoration: none;
-                        font-size: 13px;
+                        font-size: 15px;
                         font-weight: bold;
                         text-align: left;
+                    }
+                    a:hover {
+                        color: #ff6900;
                     }
                 }
                 li:nth-child(1){

@@ -70,6 +70,7 @@ export default {
             button {
                 border-style: none;
                 font-size: 16px;
+                border-radius: 0;
             }
         }
     }

@@ -3,22 +3,29 @@
     
     
     <NavHeader/>
+    <div class="underlying-with-opacity" v-if="this.$store.state.register || this.$store.state.login"></div>
+    <LoginComp v-show="this.$store.state.login"/>
+    <RegisterComp v-if="this.$store.state.register"/>
     <router-view/>
     <NewsLetter/>
-    <MainFooter/>
+    <!-- <MainFooter/> -->
     
   </div>
 </template>
 <script>
 import NavHeader from "@/components/NavHeader.vue";
-import MainFooter from "@/components/MainFooter.vue";
+// import MainFooter from "@/components/MainFooter.vue";
 import NewsLetter from "@/components/NewsLetter.vue";
+import RegisterComp from '@/components/RegisterComp';
+import LoginComp from '@/components/LoginComp';
 
 export default {
   components: {
     NavHeader,
-    MainFooter,
-    NewsLetter
+    // MainFooter,
+    NewsLetter,
+    RegisterComp,
+    LoginComp
   },
   
 }
@@ -38,6 +45,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background: #f2f2f2;
+}
+.underlying-with-opacity{
+  position: absolute;
+  background: black;
+  top:0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+  opacity: 0.7;
+  overflow-y: scroll;
 }
 .click-button {
   background: #ff6900;

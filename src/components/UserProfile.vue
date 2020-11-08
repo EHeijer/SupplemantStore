@@ -1,12 +1,11 @@
 <template>
 <div class="user-profile-container">
     <div class="user-profile">
-        <div class="profile-top">
-            <font-awesome-icon icon="home" class="icon" @click="toHomePage"/>
-            <font-awesome-icon style="margin-left: 10px;" icon="sign-out-alt" class="icon" @click="logout()"/>
-        </div>
         <div class="profile-card">
-            <h1>Profilsida</h1>
+            <div class="profile-top">
+                <font-awesome-icon icon="home" class="icon home" @click="toHomePage"/>
+                <font-awesome-icon icon="sign-out-alt" class="icon logout" @click="logout()"/>
+            </div>
             <div class="profile-icon">
                 <font-awesome-icon icon="user" class="icon" />
             </div>
@@ -53,31 +52,35 @@ export default {
 <style lang="scss" scoped>
     .user-profile-container {
         height: 90vh;
-        display: flex;
-        justify-content: center;
-        
-        padding-top: 100px;
-        background: #fff;
+        padding-top: 110px;
         .user-profile {
-            padding: 1rem 2rem 1rem 2rem;
             width: 100%;
-            .profile-top {
-                display: flex;
-                justify-content: flex-end;
-            }
-            .icon {
-                color: #ff6900;
-                width: 40px;
-                height: 40px;
-            }
             .profile-card {
-                // border: solid #000 2px;
+                box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.4);
+                padding: 1rem;
+                background: #fff;
                 width: 400px;
+                height: 70vh;
                 margin: auto;
-                border-radius: 10px;
-                h1 {
-                color: #2f2f2f;
-                padding: 1rem 0;
+                border-radius: 5px;
+                .profile-top {
+                    display: flex;
+                    justify-content: flex-end;
+                    .icon {
+                    color: #ff6900;
+                    width: 30px;
+                    height: 30px;
+                    cursor: pointer;
+                    }
+                    .home {
+                        margin-right: 7px;
+                    }
+                    .logout {
+                
+                    }
+                    .icon:hover {
+                        color: #000;
+                    }
                 }
                 .profile-icon {
                     width: 120px;
@@ -94,20 +97,24 @@ export default {
                         width: 70px;
                         height: 70px;
                         color: #ff6900;
+                        justify-self: center;
                     }
                 
                 }
                 .profile-info {
                     display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    width: 220px;
+                    grid-template-columns: 20% 80%;
                     text-align: left;
+                    justify-content: center;
                     align-items: center;
                     margin: auto;
                     padding: 1rem 0;
-
+                    gap: 1rem;
                     .icon {
                         width: 25px;
+                        height: 25px;
+                        color: #ff6900;
+                        justify-self: end;
                     }
                     p {
                         font-weight: bold;

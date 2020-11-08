@@ -7,7 +7,7 @@
         <router-link class="click-button" to="#">klicka här</router-link>
       </div>
     </div>
-    <div class="product-box first">
+    <!-- <div class="product-box first">
       <div class="upper-text">
         <span><p>MÅNADSKAMPANJER</p></span>
         <h4>Månadens utvalda favoriter</h4>
@@ -43,7 +43,7 @@
       <div class="button-wrapper">
         <router-link class="click-button" to="#">klicka här</router-link>
       </div>
-    </div>
+    </div> -->
 
   </div>
 </template>
@@ -61,21 +61,22 @@ export default {
 </script>
 <style lang="scss">
 .home-container {
-  padding-bottom: 2rem;
-  display: grid;
-  grid-template-areas: 
-    "banner banner banner banner"
-    "box1 box2 box3 box4"
-  ;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 600px 500px;
-  column-gap: 15px;
-  row-gap: 15px;
+  // padding-bottom: 2rem;
+  // display: grid;
+  // grid-template-areas: 
+  //   "banner banner banner banner"
+  //   "box1 box2 box3 box4"
+  // ;
+  // grid-template-columns: repeat(4, 1fr);
+  // grid-template-rows: 600px 500px;
+  // column-gap: 15px;
+  // row-gap: 15px;
   max-width: 1538px;
   margin: auto;
   .banner {
     grid-area: banner;
     background-image: url("../assets/homepage-banner.jpg");
+    min-height: 90vh;
   }
   .product-box {
     display: flex;

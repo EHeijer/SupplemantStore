@@ -19,6 +19,8 @@ export default new Vuex.Store({
     sumOfOrder: 0,
     orders: [],
     lastOrder: [],
+    register: false,
+    login: false,
     user: {
       username: '',
       email: '',

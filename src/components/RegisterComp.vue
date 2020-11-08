@@ -1,6 +1,7 @@
 <template>
    <div class="register">
        <div class="register-form">
+          <div class="close"><img src="../assets/close-solid.svg" alt="" @click="closeRegister()"></div>
          <h2 v-if="!successful">REGISTRERA DIG HÄR</h2>
          <form name="form" @submit.prevent="registerUser">
             <div v-if="!successful">
@@ -33,10 +34,6 @@ import User from '../models/user';
    export default {
      data: () => ({
        user:  new User('', '', '', ''),
-         //  username: '',
-         //  email: '',
-         //  address: '',
-         //  password: ''
          submitted: false,
          successful: false,
          message: ''
@@ -45,6 +42,10 @@ import User from '../models/user';
 
      ),
      methods: {
+        closeRegister() {
+           this.$store.state.register = false;
+           document.querySelector('body').style.overflowY = "visible";
+        },
         registerUser() {
            this.message = '';
            this.submitted = true;
@@ -54,6 +55,8 @@ import User from '../models/user';
                     data => {
                        this.message = data.message;
                        this.successful = true;
+                       document.querySelector('body').style.overflowY = "visible";
+                       this.$store.state.register = false;
                     },
                     error => {
                        this.message = 
@@ -81,46 +84,51 @@ import User from '../models/user';
 </script>
 
 <style lang="scss" scoped>
-   .register {
-      padding-top: 100px;
-      min-height: 90vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .register-form {
-         padding: 2rem 2rem;
-         border: solid 2px  #000;
-         border-radius: 15px;
-         width: 600px;
-         h2 {}
-         input {
-            width: 90%;
-            padding: 1rem 1rem;
-            border-style: none;
-            background: rgb(233, 231, 231);
-            border-radius: 5px;
-            color: black;
-            font-weight: bold;
-            font-size: 18px;
-         }
-         .input-name {
-            padding: 0.5rem 0;
-         }
-         .input-address {
-            padding: 0.5rem 0;
-         }
-         .input-email {
-            padding: 0.5rem 0;
-         }
-         .input-password {
-            padding: 0.5rem 0;
-         }
-         .click-button {
-         width: 90%;
-         margin: auto;
-         border-style: none;
-         font-size: 18px;
-         }
+.register-form {
+   padding: 2rem 2rem;
+   width: 600px;
+   background: #fff;
+   position: fixed;
+   top: 50%;
+   left:50%;
+   transform: translate(-50%, -50%);
+   z-index: 2;
+   .close {
+      img {
+         width: 15px;
+         position: absolute;
+         top: 2%;
+         left: 96%;
       }
    }
+   h2 {}
+   input {
+      width: 90%;
+      padding: 1rem 1rem;
+      border-style: none;
+      background: #f2f2f2;
+      border-radius: 5px;
+      color: black;
+      font-weight: bold;
+      font-size: 18px;
+   }
+   .input-name {
+      padding: 0.5rem 0;
+   }
+   .input-address {
+      padding: 0.5rem 0;
+   }
+   .input-email {
+      padding: 0.5rem 0;
+   }
+   .input-password {
+      padding: 0.5rem 0;
+   }
+   .click-button {
+   width: 90%;
+   margin: auto;
+   border-style: none;
+   font-size: 18px;
+   }
+}
 </style>
