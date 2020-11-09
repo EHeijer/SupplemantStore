@@ -1,7 +1,7 @@
 <template>
     <header>
         <div class="header-container">
-            <router-link to="/" class="title"><h1>SUPPLEMANT STORE</h1></router-link>
+            <router-link to="/" class="title"><h1>SUPPLEMENT STORE</h1></router-link>
             <!-- <div class="search-box">
                 <img src="../assets/search-solid.svg" alt="">
                 <input type="text">
