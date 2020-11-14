@@ -36,9 +36,9 @@ export default {
     
     .product-page {
         display: grid;
-        grid-template-rows: 550px auto;
         max-width: 1538px;
         margin: auto;
+        padding-top: 100px;
         .banner {
             background-image: url("../assets/product-banner.jpg");
             margin-bottom: 1rem;
@@ -51,7 +51,7 @@ export default {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 1rem;
-            padding-bottom: 2rem;
+            padding: 2rem 0;
         }
     }
 </style>
