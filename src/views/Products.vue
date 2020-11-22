@@ -54,7 +54,7 @@ export default {
             width: 90%;
             margin: auto;
             gap: 1rem;
-            padding-bottom: 2rem;
+            padding: 2rem 0;
         }
     }
 </style>

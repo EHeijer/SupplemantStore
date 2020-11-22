@@ -64,8 +64,8 @@ import { mapState } from "vuex"
         },
         sendOrder() {
             if(!this.currentUser) {
-                this.$router.push('/login')
-                console.log("hellooooooooo")
+                this.$store.state.login = true;
+                document.querySelector('body').style.overflowY = "hidden"
             }else {
                 this.$store.dispatch('loadOrderLines')
                 let cartItemsIndexStart = this.orderLines.length - this.cart.length;
