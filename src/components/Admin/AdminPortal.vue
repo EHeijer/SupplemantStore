@@ -13,22 +13,23 @@
             </div>
         </div>
         <div class="admin-functions-container">
-            <div class="function">
+            
+            <router-link :to="'admin/users'" class="function">
                 <font-awesome-icon icon="users" class="icon"/>
                 <h2>VIEW USERS</h2>
-            </div>
-            <div class="function">
+            </router-link>
+            <router-link to="admin/products" class="function">
                 <font-awesome-icon icon="tshirt" class="icon"/>
                 <h2>VIEW PRODUCTS</h2>
-            </div>
-            <div class="function">
+            </router-link>
+            <router-link to="admin/order-history" class="function">
                 <font-awesome-icon icon="history" class="icon"/>
                 <h2>VIEW ORDER HISTORY</h2>
-            </div>
-            <div class="function">
+            </router-link>
+            <router-link to="admin/orders-to-handle" class="function">
                 <font-awesome-icon icon="tasks" class="icon"/>
                 <h2>VIEW ORDERS TO SEND</h2>
-            </div>
+            </router-link>
         </div>    
     </div>
 </template>
@@ -55,12 +56,14 @@ export default {
         padding-top: 100px;
         padding-left: 2rem;
         padding-right: 2rem;
+        min-height: 90vh;
         .admin-top {
             display: grid;
             grid-template-columns: 12% 88%;
+            padding: 1rem 0;
             .admin-panel {
                 height: 50%;
-                background: #ff6900;
+                background: #5a5959;
                 align-self: center;
                 display: flex;
                 align-items: center;
@@ -89,14 +92,14 @@ export default {
                 width: 150px;
                 height: 150px;
                 border-radius: 50%;
-                border: solid 4px #ff6900;
+                border: solid 4px #5a5959;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 .icon {
                 width: 100px;
                 height: 100px;
-                color: #ff6900;
+                color: #5a5959;
             }
             }
             
@@ -104,20 +107,22 @@ export default {
         .admin-functions-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            padding: 4rem 0;
-            gap: 2rem;
+            width: 80%;
+            
+            
             margin: auto;
             .function {
-                border: solid #ff6900 2px;
-                background: #fff;
-                padding: 3rem 0.5rem;
+                cursor: pointer;
+                padding: 1rem 0.5rem;
+                text-decoration: none;
                 .icon {
                     width: 150px;
                     height: 150px;
-                    color: #ff6900;
+                    color: #5a5959;
                 }
                 h2 {
-                    color: #ff6900;
+                    color: #5a5959;
+                    font-size: 20px;
                 }
             }
             .function:hover {

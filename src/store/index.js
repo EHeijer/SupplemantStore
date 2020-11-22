@@ -18,6 +18,7 @@ export default new Vuex.Store({
     sumOfCart: 0,
     sumOfOrder: 0,
     orders: [],
+    users: [],
     lastOrder: [],
     register: false,
     login: false,
@@ -83,6 +84,12 @@ export default new Vuex.Store({
       for(let i = 0; i < payload.length; i++) {
         payload[i].price = Number(payload[i].price)
         state.products.push(payload[i])
+      }
+    },
+    setUsers(state, payload) {
+      state.users = [];
+      for (let i = 0; i < payload.length; i++) {
+        state.users.push(payload[i]);        
       }
     },
     setOrderLines(state, payload) {
@@ -159,7 +166,10 @@ export default new Vuex.Store({
       }})
       commit('setProducts', response.data)
     },
-
+    async loadUsers({commit}) {
+      const response = await axios.get("http://localhost:8080/users/");
+      commit('setUsers', response.data)
+    },
     async loadOrderLines({commit}) {
       const response = await axios.get("http://localhost:8080/orderLines/");
       commit('setOrderLines', response.data)

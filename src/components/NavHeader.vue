@@ -15,6 +15,7 @@
                 <router-link to="/shoppingCart" class="shopping-cart"> <img src="../assets/shopping-cart-solid.svg" alt=""><span class="cart-items-counter" v-if="cart.length > 0">{{cart.length}}</span><p>VARUKORG</p></router-link>
                 <router-link to="#" class="log-in" v-if="!currentUser" @click.native="toLogin()"><img src="../assets/user-solid.svg" alt=""><p>LOGGA IN</p></router-link>
                 <router-link to="/profile" class="log-in" v-if="currentUser"><img src="../assets/user-solid.svg" alt=""><p>MITT KONTO</p></router-link>
+                <router-link to="/admin" class="log-in" v-if="currentUser"><img src="../assets/user-solid.svg" alt=""><p>ADMIN</p></router-link>
             </ul>
         </div>
     </header>
@@ -55,7 +56,7 @@ export default {
 <style lang="scss" scoped>
     
     header {
-        background: #2f2f2f;
+        background: #9b9a9a;
         padding: 1.4rem;
         position: fixed;
         width: 100vw;
@@ -79,7 +80,7 @@ export default {
                 text-decoration: none;
                 
                 h1 {
-                color: #ff6900;
+                color: #fff;
                 
                 }
             }
@@ -178,14 +179,14 @@ export default {
                         text-align: left;
                     }
                     a:hover {
-                        color: #ff6900;
+                        color: #000;
                     }
                 }
                 li:nth-child(1){
-                    border-right: solid #fff 1px;
+                    border-right: solid #fff 3px;
                 }
                 li:nth-child(2){
-                    border-right: solid #fff 1px;
+                    border-right: solid #fff 3px;
                     
                 }
             }

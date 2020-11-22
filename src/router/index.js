@@ -6,6 +6,7 @@ import ShoppingCart from '../views/ShoppingCart.vue'
 import OrderConfirm from '../views/OrderConfirm.vue'
 import Admin from '../views/Admin.vue'
 import Profile from '../views/Profile.vue'
+import Users from '../views/Users.vue'
 
 Vue.use(VueRouter)
 
@@ -33,14 +34,19 @@ const routes = [
   {
     path: '/admin',
     name: 'Admin',
-    component: Admin
+    component: Admin,
+  },
+  {
+    path: '/admin/users',
+    name: 'Users',
+    component: Users
   },
   {
     path: '/profile',
     name: 'Profile',
     component: Profile
   }
-]
+];
 
 const router = new VueRouter({
   mode: 'history',

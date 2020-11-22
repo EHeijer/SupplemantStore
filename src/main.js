@@ -18,10 +18,12 @@ import {
   faUsers,
   faTshirt,
   faHistory,
-  faTasks
+  faTasks,
+  faPen,
+  faTrashAlt
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faHome, faUser, faUserPlus, faSignInAlt, faSignOutAlt, faEnvelope,faHouseUser, faUsers, faTshirt, faTasks ,faHistory);
+library.add(faHome, faTrashAlt, faPen, faUser, faUserPlus, faSignInAlt, faSignOutAlt, faEnvelope,faHouseUser, faUsers, faTshirt, faTasks ,faHistory);
 
 Vue.config.productionTip = false
 

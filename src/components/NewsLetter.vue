@@ -22,7 +22,7 @@ export default {
 
 <style lang="scss">
     .news-container {
-        background: #2f2f2f;
+        background: #9b9a9a;
         height: 250px;
         display: grid;
         grid-template-columns: 40% 30% 30%;

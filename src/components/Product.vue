@@ -106,7 +106,7 @@ export default {
             }
             .buy {
                 border: none;
-                background: #ff6900;
+                background: #5a5959;
                 padding: 0.5rem 2rem;
                 color: #fff;
                 font-weight: bold;

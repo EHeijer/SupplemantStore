@@ -8,6 +8,7 @@
     <RegisterComp v-if="this.$store.state.register"/>
     <router-view/>
     <NewsLetter/>
+    
     <!-- <MainFooter/> -->
     
   </div>
@@ -59,7 +60,7 @@ export default {
   overflow-y: scroll;
 }
 .click-button {
-  background: #ff6900;
+  background: #5a5959;
   color: #fff;
   font-weight: bold;
   text-decoration: none;

@@ -1,14 +1,19 @@
 <template>
-    <div class="admin">
-        <AdminPortal/>
         
-    </div>
+            
+            <ViewUsers/>
+            
+        
+        
+        
+    
+    
 </template>
 <script>
-import AdminPortal from '../components/Admin/AdminPortal'
+import ViewUsers from '../components/Admin/ViewUsers.vue'
 export default {
     components: {
-        AdminPortal
+        ViewUsers
     },
     data: () => ({
 
