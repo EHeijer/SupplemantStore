@@ -1,26 +1,23 @@
 <template>
-    <div class="user-container">
-        
-        <div class="user-table">
+   <div class="admin-products-container">
+       <div class="products-table">
             <header>
-                <p>All Users</p>
+                <p>All Products</p>
                 <font-awesome-icon icon="user-plus" class="icon"/>
             </header>
             <table class="table">
                 <tr class="table-top">
-                    <th>User ID</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Access Level</th>
+                    <th>Product ID</th>
+                    <th>Brand</th>
+                    <th>Name</th>
+                    <th>Price</th>
                     <th style="width:200px; text-align: center;">Actions</th>
                 </tr>
-                <tr class="table-row" v-for="(user, index) in users" :key="index">
-                    <td>{{user.id}}</td>
-                    <td>{{user.username}}</td>
-                    <td>{{user.email}}</td>
-                    <td v-if="getRoles(user) == 'admin'" >Admin</td>
-                    <td v-if="getRoles(user) == 'employee'">Employee</td>
-                    <td v-if="getRoles(user) == 'customer'">Customer</td>
+                <tr class="table-row" v-for="(product, index) in products" :key="index">
+                    <td>{{product.id}}</td>
+                    <td>{{product.brand}}</td>
+                    <td>{{product.product_name}}</td>
+                    <td>{{product.price}}</td>
                     <td style="width:200px;color:#000;">
                         <font-awesome-icon icon="user" class="icon"/>
                         <font-awesome-icon icon="pen" class="icon"/>
@@ -29,53 +26,38 @@
                 </tr>
             </table>
         </div>
-    </div>
-
+   </div>
 </template>
+
 <script>
 import { mapState } from "vuex"
-export default {
-    data: () => ({
+   export default {
+     data: () => ({
+       
+     }),
 
-    }),
-    
-    methods: {
-        getRoles(user) {
-            let roleNames = []
-            user.roles.forEach(role => {
-                roleNames.push(role.name);
-            });
-            if(roleNames.includes("ROLE_ADMIN")){
-                return "admin"
-            }else if (roleNames.includes("ROLE_ADMIN") && !roleNames.includes("ROLE_ADMIN")){
-                return "employee"
-            }else {
-                return "customer";
-            }
-        } 
-    },
-
-    computed: {
+     computed: {
         ...mapState([
-          'users'
+          'products'
       ]),
 
       
     },
     mounted(){
-      this.$store.dispatch('loadUsers')
+      this.$store.dispatch('loadProducts')
     }
-}
+   }
 </script>
 
-<style lang="scss" >
-    .user-container {
+<style lang="scss" scoped>
+   .admin-products-container {
         padding-top: 120px;
         padding-bottom: 50px;
         max-width: 1538px;
         min-height: 95vh;
         margin: auto;
-        .user-table {
+
+        .products-table {
             box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.4);
             width: 80%;
             margin: auto;
@@ -114,6 +96,5 @@ export default {
             }
 
         }
-        
-    }
+   }
 </style>

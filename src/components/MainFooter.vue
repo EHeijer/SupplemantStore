@@ -1,6 +1,6 @@
 <template>
     <footer>
-        
+        <p>©Copyright.All rights reserved.</p>
     </footer>
 </template>
 <script>
@@ -17,7 +17,12 @@ export default {
 
 <style lang="scss" scoped>
     footer {
-        background: #000;
+        height: 110px;
+        background: #5a5959;
         padding: 2rem;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>

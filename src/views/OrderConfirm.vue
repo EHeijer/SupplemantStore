@@ -65,6 +65,7 @@
    .order-confirm {
        padding-top: 8rem;
        margin-bottom: 2rem;
+       min-height: 95vh;
        .container {
            box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.4);
             border-radius: 5px;

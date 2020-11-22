@@ -38,7 +38,7 @@ export default {
         display: grid;
         max-width: 1538px;
         margin: auto;
-        min-height: 90vh;
+        min-height: 95vh;
         padding-top: 130px;
         .banner {
             background-image: url("../assets/product-banner.jpg");

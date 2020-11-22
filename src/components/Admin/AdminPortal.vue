@@ -56,7 +56,7 @@ export default {
         padding-top: 100px;
         padding-left: 2rem;
         padding-right: 2rem;
-        min-height: 90vh;
+        min-height: 95vh;
         .admin-top {
             display: grid;
             grid-template-columns: 12% 88%;

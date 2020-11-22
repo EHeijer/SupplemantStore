@@ -56,7 +56,7 @@ export default {
 <style lang="scss" scoped>
     
     header {
-        background: #9b9a9a;
+        background:rgba(#000, 0.54);
         padding: 1.4rem;
         position: fixed;
         width: 100vw;
@@ -81,7 +81,7 @@ export default {
                 
                 h1 {
                 color: #fff;
-                
+                font-weight: 300;
                 }
             }
             

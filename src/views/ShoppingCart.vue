@@ -114,6 +114,7 @@ import { mapState } from "vuex"
 <style lang="scss" scoped>
 .cart-container {
    padding-top: 10rem;
+   min-height: 95vh;
     .shopping-cart {
         margin-bottom: 5rem;
         

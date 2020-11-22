@@ -89,7 +89,7 @@ import User from '../models/user';
 hr {
 border: 0;
 height: 0;
-border-top: 1px solid #ff6900;
+border-top: 1px solid #5a5959;
 width: 90%;
 margin: auto;
 padding: 0.5rem 0;

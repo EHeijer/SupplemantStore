@@ -1,11 +1,12 @@
 <template>
 <div class="user-profile-container">
     <div class="user-profile">
+        <div class="profile-top">
+            <font-awesome-icon icon="home" class="icon home" @click="toHomePage"/>
+            <font-awesome-icon icon="sign-out-alt" class="icon logout" @click="logout()"/>
+        </div>
         <div class="profile-card">
-            <div class="profile-top">
-                <font-awesome-icon icon="home" class="icon home" @click="toHomePage"/>
-                <font-awesome-icon icon="sign-out-alt" class="icon logout" @click="logout()"/>
-            </div>
+            
             <div class="profile-icon">
                 <font-awesome-icon icon="user" class="icon" />
             </div>
@@ -51,25 +52,17 @@ export default {
 
 <style lang="scss" scoped>
     .user-profile-container {
-        height: 90vh;
-        padding-top: 110px;
+        height: 95vh;
+        padding: 110px 3rem 0 3rem;
         .user-profile {
             width: 100%;
-            .profile-card {
-                box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.4);
-                padding: 1rem;
-                background: #fff;
-                width: 400px;
-                height: 70vh;
-                margin: auto;
-                border-radius: 5px;
-                .profile-top {
+             .profile-top {
                     display: flex;
                     justify-content: flex-end;
                     .icon {
-                    color: #ff6900;
-                    width: 30px;
-                    height: 30px;
+                    color: #5a5959;
+                    width: 40px;
+                    height: 40px;
                     cursor: pointer;
                     }
                     .home {
@@ -82,13 +75,21 @@ export default {
                         color: #000;
                     }
                 }
+            .profile-card {
+                
+                padding: 1rem;
+                
+                width: 400px;
+                height: 70vh;
+                margin: auto;
+                border-radius: 5px;
+               
                 .profile-icon {
                     width: 120px;
                     height: 120px;
                     margin: auto;
                     border-radius: 50%;
-                    border: solid 2px #ff6900;
-                    background: #fff;
+                    border: solid 2px #5a5959;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -96,7 +97,7 @@ export default {
                     .icon {
                         width: 70px;
                         height: 70px;
-                        color: #ff6900;
+                        color: #5a5959;
                         justify-self: center;
                     }
                 
@@ -113,7 +114,7 @@ export default {
                     .icon {
                         width: 25px;
                         height: 25px;
-                        color: #ff6900;
+                        color: #5a5959;
                         justify-self: end;
                     }
                     p {
