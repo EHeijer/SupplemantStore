@@ -57,7 +57,7 @@ import User from '../models/user';
                this.$store.dispatch('auth/login', this.user).then(
                   () => {
                      localStorage.setItem('user', JSON.stringify(this.user));
-                     this.$router.push('/profile');
+                     this.$router.push('/products');
                      document.querySelector('body').style.overflowY = "visible";
                      this.$store.state.login = false;
                   },
@@ -79,7 +79,7 @@ import User from '../models/user';
      },
      created() {
         if(this.loggedIn) {
-           this.$router.push('/profile');
+           this.$router.push('/products');
         }
      }
    }

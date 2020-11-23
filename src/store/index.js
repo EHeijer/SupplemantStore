@@ -114,6 +114,12 @@ export default new Vuex.Store({
       console.log(state)
       console.log(payload)
     },
+
+    updateOrder(state,payload){
+      console.log(state)
+      console.log(payload)
+    },
+
     addOrder(state, payload) {
       state.lastOrder = []
       state.sumOfOrder = 0;
@@ -204,7 +210,14 @@ export default new Vuex.Store({
       console.log(order)
       const response = await axios.post("http://localhost:8080/orders", {...order})
       commit('addOrder', response.data)
+    },
+
+    async changeOrderStatus({commit}, order) {
+      console.log(order)
+      const response = await axios.put(`http://localhost:8080/orders/changestatus/${order.id}`, {...order})
+      commit('updateOrder', response.data)
     }
+
   },
   getters: {
     getOrderItems(state) {

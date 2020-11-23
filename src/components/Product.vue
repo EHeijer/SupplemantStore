@@ -95,6 +95,10 @@ export default {
         text-align: left;
         width: 70%;
         margin: 1rem auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 115px;
         .price-and-buy {
             margin-top: 1rem;
             display: flex;

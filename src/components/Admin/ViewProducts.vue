@@ -10,6 +10,7 @@
                     <th>Product ID</th>
                     <th>Brand</th>
                     <th>Name</th>
+                    <th>Category</th>
                     <th>Price</th>
                     <th style="width:200px; text-align: center;">Actions</th>
                 </tr>
@@ -17,7 +18,8 @@
                     <td>{{product.id}}</td>
                     <td>{{product.brand}}</td>
                     <td>{{product.product_name}}</td>
-                    <td>{{product.price}}</td>
+                    <td>{{product.productCategory}}</td>
+                    <td>{{product.price}} KR</td>
                     <td style="width:200px;color:#000;">
                         <font-awesome-icon icon="user" class="icon"/>
                         <font-awesome-icon icon="pen" class="icon"/>
