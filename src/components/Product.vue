@@ -86,6 +86,7 @@ export default {
     padding: 1rem 0;
     background: #f5f5f5;
     box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.4);
+    height: 450px;
     .product-image {
         img {
             

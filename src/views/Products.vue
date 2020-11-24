@@ -8,7 +8,7 @@
         </div>
     </div> -->
     <div class="product-container">
-        <product v-for="(product,index) in products"  :key="index" :product="product"/>
+        <product v-for="(product,index) in getProductsNotRemoved"  :key="index" :product="product"/>
     </div>
   </div>
 </template>
@@ -23,7 +23,10 @@ export default {
   computed: {
       ...mapState([
           'products'
-      ])
+      ]),
+      getProductsNotRemoved() {
+        return this.products.filter(product => !product.removed);
+    }
   },
   mounted(){
       this.$store.dispatch('loadProducts')
@@ -52,7 +55,7 @@ export default {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             width: 90%;
-            margin: auto;
+            margin: 0 auto;
             gap: 1rem;
             padding: 2rem 0;
         }

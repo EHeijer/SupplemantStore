@@ -4,7 +4,6 @@
        <div class="order-table">
             <header>
                 <p>Orders To Be Handled</p>
-                <font-awesome-icon icon="user-plus" class="icon"/>
             </header>
             <table class="table">
                 <tr class="table-top">

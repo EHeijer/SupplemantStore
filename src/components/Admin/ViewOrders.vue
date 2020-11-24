@@ -5,7 +5,6 @@
        <div class="order-table">
             <header>
                 <p>Order History</p>
-                <font-awesome-icon icon="user-plus" class="icon"/>
             </header>
             <table class="table">
                 <tr class="table-top">
