@@ -38,13 +38,13 @@
                             <div><img style="width:200px;" :src="require('@/assets/' + product.imageUrl)" alt=""></div>
                             <label for="brand">Brand</label>
                             <input name="brand" :placeholder="product.brand">
-                            <br>
+                            
                             <label for="name">Product Name</label>
                             <input name="name" :placeholder="product.product_name">
-                            <br>
+                            
                             <label for="category">Category</label>
                             <input name="category" :placeholder="product.productCategory">
-                            <br>
+                            
                             <label for="price">Price</label>
                             <input name="price" :placeholder="product.price">
                         </div>
@@ -122,7 +122,7 @@ import { mapState } from "vuex"
     justify-content: space-between;
     align-items: center;
     border-radius: 3px;
-    height:650px;
+    height:660px;
     header {
         width: 100%;
         .icon {
@@ -142,11 +142,15 @@ import { mapState } from "vuex"
         label {
             width: 80%;
             text-align: left;
+            margin: 2px 0;
         }
         input {
             width: 80%;
-            padding: 0.5rem 0.3rem;
+            padding: 0.7rem 0.3rem;
             color: #000;
+            margin-bottom: 8px;
+            border-radius: 3px;
+            border: solid 2px rgba(0, 0, 0, 0.54);
         }
     }
     .click-button {
