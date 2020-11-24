@@ -89,7 +89,7 @@ export default {
     height: 450px;
     .product-image {
         img {
-            
+            width: 266px;
         }
     }
     .product-info {

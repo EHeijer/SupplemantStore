@@ -1,12 +1,14 @@
 <template>
    <div class="admin-products-container">
        <div class="underlying"></div>
+       
        <div class="products-table">
             <header>
                 <p>All Products</p>
                 <div class="add-product">
-                    <font-awesome-icon icon="plus-circle" class="icon"/>
+                    <font-awesome-icon @click="showProductForm" icon="plus-circle" class="icon"/>
                     <p>Add Product</p>
+                    <RegisterProduct :newProduct="newProduct"/>
                 </div>
             </header>
             <table class="table">
@@ -37,16 +39,13 @@
                             
                             <div><img style="width:200px;" :src="require('@/assets/' + product.imageUrl)" alt=""></div>
                             <label for="brand">Brand</label>
-                            <input name="brand" :placeholder="product.brand">
+                            <input name="brand" :placeholder="product.brand" v-model="product.brand">
                             
                             <label for="name">Product Name</label>
-                            <input name="name" :placeholder="product.product_name">
-                            
-                            <label for="category">Category</label>
-                            <input name="category" :placeholder="product.productCategory">
+                            <input name="name" :placeholder="product.product_name" v-model="product.product_name">
                             
                             <label for="price">Price</label>
-                            <input name="price" :placeholder="product.price">
+                            <input name="price" :placeholder="product.price" v-model="product.price">
                         </div>
                         <div class="button-container">
                             <button class="click-button" @click="updateProduct(product)">Update Product</button>
@@ -60,9 +59,19 @@
 
 <script>
 import { mapState } from "vuex"
+import RegisterProduct from '../Admin/RegisterProduct'
    export default {
+    components: {
+        RegisterProduct
+    },
      data: () => ({
-       
+        newProduct: {
+            imageUrl:'',
+            brand:'',
+            product_name: '',
+            price: '',
+            productCategory:''
+        }
      }),
     
     methods: {
@@ -79,6 +88,15 @@ import { mapState } from "vuex"
         removeProduct(product) {
             product.removed = true;
             this.$store.dispatch("changeProductStatusToRemoved", product);
+        },
+        updateProduct(product) {
+            this.$store.dispatch("updateProduct", product);
+            this.hideProduct(product.id)
+        },
+        showProductForm() {
+            document.querySelector('.underlying').style.display = 'block';
+            document.querySelector('.new-product-form').style.display = 'flex';
+            document.querySelector('body').style.overflowY = "hidden";
         }
     },
      computed: {
@@ -114,7 +132,7 @@ import { mapState } from "vuex"
     background: #fff;
     top:50%;
     left: 50%;
-    width: 400px;
+    width: 500px;
     z-index: 2;
     transform: translate(-50%, -50%);
     display: none;
@@ -127,8 +145,8 @@ import { mapState } from "vuex"
         width: 100%;
         .icon {
         position: absolute;
-        left: 94%;
-        top: 5px;
+        left: 95%;
+        top: 7px;
         font-size: 20px;
         }
     }
@@ -151,6 +169,7 @@ import { mapState } from "vuex"
             margin-bottom: 8px;
             border-radius: 3px;
             border: solid 2px rgba(0, 0, 0, 0.54);
+            font-size: 16px;
         }
     }
     .click-button {

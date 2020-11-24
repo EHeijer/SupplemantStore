@@ -141,6 +141,13 @@ export default new Vuex.Store({
       console.log(state)
       console.log(payload)
     },
+    updateProduct(state,payload) {
+      console.log(state)
+      console.log(payload)
+    },
+    addProduct(state,payload) {
+      state.products.push(payload);
+    },
     async removeOrderLine(state, payload) {
       state.cart.splice(state.cart.indexOf(payload), 1);
       let _cart = JSON.stringify(state.cart);
@@ -213,7 +220,10 @@ export default new Vuex.Store({
       const response = await axios.put(`http://localhost:8080/products/${product.id}`, {...product})
       commit('changeProductStatus', response.data)
     },
-
+    async updateProduct({commit}, product) {
+      const response = await axios.put(`http://localhost:8080/products/${product.id}`, {...product})
+      commit('updateProduct', response.data)
+    }, 
 
     async sendOrder({commit}, order) {
       console.log(order)
@@ -225,6 +235,11 @@ export default new Vuex.Store({
       console.log(order)
       const response = await axios.put(`http://localhost:8080/orders/changestatus/${order.id}`, {...order})
       commit('updateOrder', response.data)
+    },
+
+    async addProduct({commit}, product) {
+      const response = await axios.post("http://localhost:8080/products", {...product})
+      commit('addProduct', response.data)
     }
 
   },
